@@ -9,6 +9,25 @@ and prints the result to the terminal window.
 
 """
 
+
+def requrest_sanitized_number(prompt: str) -> float:
+    """
+    Request a number from the user and keep asking until the input is valid.
+
+    Args:
+        prompt (str): Prompt text displayed to the user.
+
+    Returns:
+        float: A sanitized numeric value.
+    """
+
+    while True:
+        raw_value = input(prompt).strip()
+        try:
+            return float(raw_value)
+        except ValueError:
+            print("Invalid number. Please enter a valid numeric value.")
+
 def simple_calculator(operation: str, num1: float, num2: float) -> float:
     """
     Function that takes in two numbers and an operation (add, subtract, multiply, divide),
@@ -41,9 +60,9 @@ def main():
     
     print(f"===== Simple Calculator =====")
 
-    # Ask the user for sample input    
-    num1 = float(input("Enter the first number: "))
-    num2 = float(input("Enter the second number: "))
+    # Ask the user for sample input
+    num1 = requrest_sanitized_number("Enter the first number: ")
+    num2 = requrest_sanitized_number("Enter the second number: ")
     operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
 
     # Perform the calculation and display the result
